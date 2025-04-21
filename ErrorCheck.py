@@ -9,7 +9,6 @@ def check(Value, Value_Type):
                 return False
             if Value > 255 or Value < 0:
                 QMessageBox.critical(None, "An error has occured", "Please ensure that the Decimal Value is < 256 and => 0")
-                return False
             
 
         case "Binary":
@@ -18,7 +17,6 @@ def check(Value, Value_Type):
                 return False
             for char in Value:
                 if char != "1" and char != "0":
-                    print(char)#debug
                     QMessageBox.critical(None, "An error has occured", "Please ensure that Binary Value only contains '1' and '0'")
                     return False
             
@@ -41,7 +39,5 @@ def check(Value, Value_Type):
                 QMessageBox.critical(None, "An error has occured", f"Please ensure that the Hex value only has hex digits \n eg {HexDigts}")
                 return False
 
-            Value = str(Value)
-            Value = ' '.join(format(ord(d), '08b') for d in Value)
-            return Value
+    return True
             

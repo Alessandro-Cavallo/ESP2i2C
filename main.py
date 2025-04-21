@@ -5,6 +5,7 @@ from GUI import *
 import read
 import write
 import ErrorCheck
+import DataTypeConversion
 
 #____Backend____#
 class ESP2i2c(QMainWindow):
@@ -27,24 +28,25 @@ class ESP2i2c(QMainWindow):
         #____Slave Address____#
         SlaveAddr = self.ui.le_SlaveAddress.text()
         SlaveAddr_Type = self.ui.cb_Address.currentText()
-        if not ErrorCheck.check(SlaveAddr, SlaveAddr_Type):
+        if ErrorCheck.check(SlaveAddr, SlaveAddr_Type):
             Valid += 1
-            SlaveAddr = ErrorCheck.check(SlaveAddr, SlaveAddr_Type)
+            SlaveAddr = DataTypeConversion.typeChecker(SlaveAddr, SlaveAddr_Type)
         
         #____Start Address____#
         StartAddr = self.ui.le_StAddr.text()
         StartAddr_Type = self.ui.cb_StAddr.currentText()
-        if ErrorCheck.check(StartAddr, StartAddr_Type) != False:
+        if ErrorCheck.check(StartAddr, StartAddr_Type):
             Valid +=1
-            StartAddr = ErrorCheck.check(StartAddr, StartAddr_Type)
+            StartAddr = DataTypeConversion.typeChecker(StartAddr, StartAddr_Type)
         
         #____No. Of Bytes____#
-        # NoBytes = self.ui.le_NoBytes.text()
-        # NoBytes_Type = self.ui.cb_NoBytes.currentText()
-        # if not ErrorCheck.check(NoBytes, NoBytes_Type):
-        #     Valid += 1
+        NoBytes = self.ui.le_NoBytes.text()
+        NoBytes_Type = self.ui.cb_NoBytes.currentText()
+        if ErrorCheck.check(NoBytes, NoBytes_Type):
+            Valid += 1
+            NoBytes = DataTypeConversion.typeChecker(NoBytes, NoBytes_Type)
 
-        if Valid == 2:
+        if Valid == 3:
             Recieved = read.read(ComPort, BaudRate, SlaveAddr, StartAddr)
             print(f"Recived: {Recieved}")
             self.ui.le_Binary.setText(str(Recieved))
