@@ -34,11 +34,14 @@ def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
         ser.port = f"COM{ComPort}"
         ser.timeout = 10
         ser.open()
-        ser.write(b'read \n')
+        ser.write(b'read')
+        ser.write(b'\n')
         time.sleep(0.01)
         ser.write(SlaveAddress)
+        ser.write(b'\n')
         time.sleep(0.01)
         ser.write(StartAddress)
+        ser.write(b'\n')
         time.sleep(0.01)
         #ser.write(NoOfBytes.encode())
         time.sleep(0.01)

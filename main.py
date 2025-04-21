@@ -29,14 +29,12 @@ class ESP2i2c(QMainWindow):
         SlaveAddr_Type = self.ui.cb_Address.currentText()
         if ErrorCheck.check(SlaveAddr, SlaveAddr_Type):
             Valid += 1
-            SlaveAddr = SlaveAddr + "\n"
         
         #____Start Address____#
         StartAddr = self.ui.le_StAddr.text()
         StartAddr_Type = self.ui.cb_StAddr.currentText()
         if ErrorCheck.check(StartAddr, StartAddr_Type):
             Valid +=1
-            StartAddr = StartAddr + "\n"
         
         #____No. Of Bytes____#
         NoBytes = self.ui.le_NoBytes.text()
