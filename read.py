@@ -8,24 +8,25 @@ def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
 
     #____Convert To Binary____#
     try:
-        SlaveAddress = bin(SlaveAddress)
+        SlaveAddress = bin(SlaveAddress)[2:]
     except:
         SlaveAddress = int(SlaveAddress, 16)
-        SlaveAddress = bin(SlaveAddress)
+        SlaveAddress = bin(SlaveAddress)[2:]
 
     try:
-        StartAddress = bin(StartAddress)
+        StartAddress = bin(StartAddress)[2:]
     except:
         StartAddress = int(StartAddress, 16)
-        StartAddress = bin(StartAddress)
+        StartAddress = bin(StartAddress)[2:]
 
     try:
-        NoOfBytes = bin(NoOfBytes)
+        NoOfBytes = bin(NoOfBytes)[2:]
     except:
         NoOfBytes = int(NoOfBytes, 16)
-        NoOfBytes = bin(NoOfBytes)
+        NoOfBytes = bin(NoOfBytes)[2:]
     
-    print(f"{SlaveAddress} \n {StartAddress} \n {NoOfBytes}")
+    print(f"Slave: {SlaveAddress} \n Start: {StartAddress} \n Bytes: {NoOfBytes}")
+
 
     # ____Serial____#
     with serial.Serial() as ser:
@@ -35,9 +36,10 @@ def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
         ser.open()
         ser.write(b'read')
         time.sleep(0.01)
-        ser.write(SlaveAddress.encode())
+        ser.write(SlaveAddress)
+        
         time.sleep(0.01)
-        ser.write(StartAddress.encode())
+        ser.write(StartAddress)
         time.sleep(0.01)
         #ser.write(NoOfBytes.encode())
         time.sleep(0.01)
