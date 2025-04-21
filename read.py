@@ -1,5 +1,6 @@
 #____Imports____
 import serial
+import time
 
 #____Function____
 def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
@@ -30,10 +31,15 @@ def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
         ser.port = int(ComPort)
         ser.open()
         ser.write(b'read')
+        time.sleep(0.01)
         ser.write(SlaveAddress)
+        time.sleep(0.01)
         ser.write(StartAddress)
+        time.sleep(0.01)
         ser.write(NoOfBytes)
+        time.sleep(0.01)
         Recived = ser.read_all()
+        time.sleep(0.01)
         ser.close()
     
     return Recived

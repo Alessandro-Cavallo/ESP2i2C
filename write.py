@@ -1,5 +1,6 @@
 #____Imports____
 import serial
+import time
 
 #____Function____
 def write(ComPort, BaudRate, SlaveAddress, RegAddress, Data):
@@ -30,8 +31,12 @@ def write(ComPort, BaudRate, SlaveAddress, RegAddress, Data):
         ser.port = int(ComPort)
         ser.open()
         ser.write(b'write')
+        time.sleep(0.01)
         ser.write(SlaveAddress)
+        time.sleep(0.01)
         ser.write(RegAddress)
+        time.sleep(0.01)
         ser.write(Data)
+        time.sleep(0.01)
         ser.close()
         
