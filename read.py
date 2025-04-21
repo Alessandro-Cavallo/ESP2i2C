@@ -3,7 +3,7 @@ import serial
 import time
 
 #____Function____#
-def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
+def read(ComPort, BaudRate, SlaveAddress, StartAddress):
     print("Read Function")#Debug
 
     # ____Serial____#
@@ -20,8 +20,6 @@ def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
         time.sleep(0.01)
         ser.write(StartAddress)
         ser.write(b'\n')
-        time.sleep(0.01)
-        #ser.write(NoOfBytes.encode())
         time.sleep(0.01)
         Recived = ser.readline()
         time.sleep(0.01)
