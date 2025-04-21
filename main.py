@@ -27,24 +27,24 @@ class ESP2i2c(QMainWindow):
         #____Slave Address____#
         SlaveAddr = self.ui.le_SlaveAddress.text()
         SlaveAddr_Type = self.ui.cb_Address.currentText()
-        if not ErrorCheck.check(SlaveAddr, SlaveAddr_Type):
+        if ErrorCheck.check(SlaveAddr, SlaveAddr_Type) != False:
             Valid += 1
             SlaveAddr = ErrorCheck.check(SlaveAddr, SlaveAddr_Type)
         
         #____Start Address____#
         StartAddr = self.ui.le_StAddr.text()
         StartAddr_Type = self.ui.cb_StAddr.currentText()
-        if not ErrorCheck.check(StartAddr, StartAddr_Type):
+        if ErrorCheck.check(StartAddr, StartAddr_Type) != False:
             Valid +=1
             StartAddr = ErrorCheck.check(StartAddr, StartAddr_Type)
         
         #____No. Of Bytes____#
-        NoBytes = self.ui.le_NoBytes.text()
-        NoBytes_Type = self.ui.cb_NoBytes.currentText()
-        if not ErrorCheck.check(NoBytes, NoBytes_Type):
-            Valid += 1
+        # NoBytes = self.ui.le_NoBytes.text()
+        # NoBytes_Type = self.ui.cb_NoBytes.currentText()
+        # if not ErrorCheck.check(NoBytes, NoBytes_Type):
+        #     Valid += 1
 
-        if Valid == 3:
+        if Valid == 2:
             Recieved = read.read(ComPort, BaudRate, SlaveAddr, StartAddr, NoBytes)
             print(f"Recived: {Recieved}")
             self.ui.le_Binary.setText(str(Recieved))
