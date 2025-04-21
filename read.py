@@ -40,7 +40,7 @@ def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
         time.sleep(0.01)
         ser.write(NoOfBytes.encode())
         time.sleep(0.01)
-        Recived = ser.read_all()
+        Recived = ser.readline()
         time.sleep(0.01)
         ser.close()
     
