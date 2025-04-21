@@ -2,7 +2,7 @@
 import serial
 import time
 
-#____Function____
+#____Function____#
 def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
     print("Read Function")#Debug
 
@@ -27,10 +27,11 @@ def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
     
     print(f"{SlaveAddress} \n {StartAddress} \n {NoOfBytes}")
 
-    # ____Serial____
+    # ____Serial____#
     with serial.Serial() as ser:
         ser.baudrate = int(BaudRate)
         ser.port = f"COM{ComPort}"
+        ser.timeout = 10
         ser.open()
         ser.write(b'read')
         time.sleep(0.01)
@@ -40,7 +41,7 @@ def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
         time.sleep(0.01)
         #ser.write(NoOfBytes.encode())
         time.sleep(0.01)
-        Recived = ser.read_all()
+        Recived = ser.readline()
         time.sleep(0.01)
         ser.close()
     
