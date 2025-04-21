@@ -30,15 +30,15 @@ def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
     # ____Serial____
     with serial.Serial() as ser:
         ser.baudrate = int(BaudRate)
-        ser.port = ComPort
+        ser.port = f"COM{ComPort}"
         ser.open()
-        ser.write(b'read')
+        ser.write('read')
         time.sleep(0.01)
-        ser.write(SlaveAddress)
+        ser.write(SlaveAddress.encode())
         time.sleep(0.01)
-        ser.write(StartAddress)
+        ser.write(StartAddress.encode())
         time.sleep(0.01)
-        ser.write(NoOfBytes)
+        ser.write(NoOfBytes.encode())
         time.sleep(0.01)
         Recived = ser.read_all()
         time.sleep(0.01)

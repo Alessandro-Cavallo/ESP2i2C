@@ -44,9 +44,10 @@ class ESP2i2c(QMainWindow):
 
         if Valid == 3:
             Recieved = read.read(ComPort, BaudRate, SlaveAddr, StartAddr, NoBytes)
+            print(f"Recived: {Recieved}")
             self.ui.le_Binary.setText(str(Recieved))
             self.ui.le_Decimal.setText(str(int(str(Recieved), 2)))
-            self.ui.le_Decimal.setText(str(hex(int(str(Recieved), 2))))
+            self.ui.le_Hex.setText(str(hex(int(str(Recieved), 2))))
 
     
     def Write(self):
