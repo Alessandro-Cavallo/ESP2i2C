@@ -21,7 +21,7 @@ class ESP2i2c(QMainWindow):
         print("Read")#Debug
         Valid = 0 #needs to be 3 for the system to function, increments after each item is validated
 
-        ComPort = int(self.ui.cb_ComPort.currentText())
+        ComPort = (self.ui.cb_ComPort.currentText())
         BaudRate = int(self.ui.cb_BaudRate.currentText())
 
         #____Slave Address____#
