@@ -40,5 +40,8 @@ def check(Value, Value_Type):
             if FirstValueValid == False or SecondValueValid == False:
                 QMessageBox.critical(None, "An error has occured", f"Please ensure that the Hex value only has hex digits \n eg {HexDigts}")
                 return False
+
+            Value = str(Value)
+            Value = ' '.join(format(ord(d), '08b') for d in Value)
+            return Value
             
-    return True
