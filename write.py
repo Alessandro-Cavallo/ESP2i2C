@@ -10,19 +10,19 @@ def write(ComPort, BaudRate, SlaveAddress, RegAddress, Data):
     try:
         SlaveAddress = bin(SlaveAddress)
     except:
-        SlaveAddress = int(SlaveAddress)
+        SlaveAddress = int(SlaveAddress, 16)
         SlaveAddress = bin(SlaveAddress)
     
     try:
         RegAddress = bin(RegAddress)
     except:
-        RegAddress = int(RegAddress)
+        RegAddress = int(RegAddress, 16)
         RegAddress = bin(RegAddress)
 
     try:
         Data = bin(Data)
     except:
-        Data = int(Data)
+        Data = int(Data, 16)
         Data = bin(Data)
     
     #____Serial____

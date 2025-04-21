@@ -10,22 +10,24 @@ def read(ComPort, BaudRate, SlaveAddress, StartAddress, NoOfBytes):
     try:
         SlaveAddress = bin(SlaveAddress)
     except:
-        SlaveAddress = int(SlaveAddress)
+        SlaveAddress = int(SlaveAddress, 16)
         SlaveAddress = bin(SlaveAddress)
 
     try:
         StartAddress = bin(StartAddress)
     except:
-        StartAddress = int(StartAddress)
+        StartAddress = int(StartAddress, 16)
         StartAddress = bin(StartAddress)
 
     try:
         NoOfBytes = bin(NoOfBytes)
     except:
-        NoOfBytes = int(NoOfBytes)
+        NoOfBytes = int(NoOfBytes, 16)
         NoOfBytes = bin(NoOfBytes)
+    
+    print(f"{SlaveAddress} \n {StartAddress} \n {NoOfBytes}")
 
-    #____Serial____
+    # ____Serial____
     with serial.Serial() as ser:
         ser.baudrate = int(BaudRate)
         ser.port = int(ComPort)
