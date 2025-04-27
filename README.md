@@ -1,6 +1,7 @@
 # ESP 2 i²C #
 A GUI interface to control a microcontroller based i²C master.
 
+**This is a work in progress and may not function as intended.**
 ## Requirements ##
 `` pip install PyQt5 `` 
 
